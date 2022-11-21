@@ -1,0 +1,21 @@
+.profile__info {
+
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+
+
+    grid-template-areas:
+        "name edit-button"
+        "description description";
+    gap: 16px 18px;
+
+}
+
+@media (max-width: 620px) {
+    .profile__info {
+        gap: 14px;
+        margin: auto;
+    }
+
+}

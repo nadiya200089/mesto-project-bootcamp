@@ -1,0 +1,17 @@
+.profile__description {
+    grid-area: description;
+    justify-self: left;
+    font-size: 1.125em;
+    font-weight: 400;
+    line-height: 1.361em;
+}
+
+@media (max-width: 320px) {
+    .profile__description {
+        font-size: 0.875em;
+        line-height: 0.9em;
+        justify-self: center;
+
+    }
+
+}

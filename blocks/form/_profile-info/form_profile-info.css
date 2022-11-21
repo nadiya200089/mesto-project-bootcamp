@@ -1,0 +1,17 @@
+.form_profile-info {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    position: relative;
+    max-width: 430px;
+    width: 100%;
+    padding: 34px 36px 37px;
+    z-index: 1;
+}
+
+@media (max-width: 320px) {
+    .form_profile-info {
+        padding: 25px 22px;
+    }
+}

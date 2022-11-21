@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./vendor/normalize.css"> -->
+    <link rel="stylesheet" href="./pages/index.css">
+    <title>Mesto</title>
+</head>
+
+<body class="page">
+    <header class="header">
+        <img class="header__logo" src="./images/logo.svg" alt="логотип">
+
+    </header>
+    <main class="main">
+        <div class="profile">
+
+            <img class="img profile__avatar" src="./images/image.jpg" alt="Жак-Ив Кусто">
+
+            <div class="profile__info">
+                <div class="profile__name">Жак-Ив Кусто</div>
+                <div class="profile__edit-button">
+                    <img class="img btn profile__edit-button-img" src="./images/pencil.svg" alt="карандаш">
+                </div>
+
+                <div class="profile__description">Исследователь океана</div>
+            </div>
+            <button class="btn profile__add-button">
+                <img class="img profile__add-button-img" src="./images/plus.svg" alt="плюсик">
+            </button>
+        </div>
+        <section class="elements">
+            <div class="element">
+                <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                <div class="element__description">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <div class="element__like element__like_active"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img class="img element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                <div class="element__description">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img class="img element__image" src="./images/dombay.jpg" alt="Домбай">
+                <div class="element__description">
+                    <h2 class="element__title">Домбай</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img class="img element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                <div class="element__description">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img class="img element__image" src="./images/dombay.jpg" alt="Домбай">
+                <div class="element__description">
+                    <h2 class="element__title">Домбай</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+            <div class="element">
+                <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                <div class="element__description">
+                    <h2 class="element__title">Карачаевск</h2>
+                    <div class="element__like"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p class="footer">&copy; 2020 Mesto Russia</p>
+    </footer>
+
+    <div class="popup popup_profile">
+        <div class="popup__area"></div>
+        <div class="popup__body">
+            <form class="form form_profile-info">
+                <button class="btn form__close-icon" type="button">
+                    <img class="img" src="./images/close-icon.svg" alt="крестик">
+                </button>
+                <h2 class="form__title">Редактировать профиль</h2>
+                <fieldset class="form__input-container">
+                    <input type="text" class="form__user-name" placeholder="Жак-Ив Кусто">
+                    <input type="text" class="form__user-description" placeholder="Исследователь океана">
+                </fieldset>
+                <button class="btn form__submit-button">Сохранить</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

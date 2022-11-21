@@ -1,0 +1,21 @@
+.profile__add-button {
+    border: 1px solid white;
+    padding: 0;
+    background-color: transparent;
+    padding: 14px 64px;
+
+}
+
+.profile__add-button:hover {
+    opacity: 0.6;
+}
+
+
+@media (max-width: 320px) {
+    .profile__add-button {
+        padding: 16px 132px;
+        margin-top: 12px;
+
+    }
+
+}
