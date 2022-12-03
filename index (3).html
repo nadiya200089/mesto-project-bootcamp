@@ -32,81 +32,50 @@
                 <img class="img profile__add-button-img" src="./images/plus.svg" alt="плюсик">
             </button>
         </div>
-        <div class="elements">
+        <div id="elements-template" class="elements">
+            
+                <div class="element">
+                    <button type='button' class="btn element__trash">
+                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
+                    </button>
+                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                    <div class="element__description">
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button type='button' class="btn element__like"></button>
+                    </div>
+                </div>
+            
+            <div class="element">
+                <button type='button' class="btn element__trash">
+                    <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
+                </button>
+                <img class="img element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                <div class="element__description">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button type='button' class="btn element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <button type='button' class="btn element__trash">
+                    <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
+                </button>
+                <img class="img element__image" src="./images/dombay.jpg" alt="Домбай">
+                <div class="element__description">
+                    <h2 class="element__title">Домбай</h2>
+                    <button type='button' class="btn element__like"></button>
+                </div>
+            </div>
+            <div class="element">
+                <button type='button' class="btn element__trash">
+                    <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
+                </button>
+                <img class="img element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус">
+                <div class="element__description">
+                    <h2 class="element__title">Гора Эльбрус</h2>
+                    <button type='button' class="btn element__like"></button>
+                </div>
+            </div>
            
-              
-            <!-- <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
-            <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
-            <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
-            <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
-            <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
-            <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template> -->
         </div>
     </main>
     <footer>
@@ -145,7 +114,7 @@
                         <input type="text" class="form__places-name" placeholder="название" value="">
                         <input type="text" class="form__src" placeholder="ссылка на картинку" src="">
                     </fieldset>
-                    <button type="button" class="btn form__submit-button create-cards">Сохранить</button>
+                    <button class="btn form__submit-button btn2">Сохранить</button>
                 </div>
             </div>
         </div>
@@ -158,13 +127,13 @@
                 <button class="btn popup__close" type="button">
                     <img class="img" src="./images/close-icon.svg" alt="крестик">
                 </button>
-                <img src="" alt="" class="popup__photo">
-                <h2 class="popup__title"></h2>
+                <img src="" alt="" class="popup__image">
+                <div class="popup__title"></div>
             </div>
         </div>
     </div>
 
-    <script src="script2.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>

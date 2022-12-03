@@ -1,6 +1,6 @@
-function likeClickHandler(event) {
-  event.target.classList.toggle('element__like_active');
-}
+// function likeClickHandler(event) {
+//   event.target.classList.toggle('element__like_active');
+// }
 
 const profileEditbtnNode = document.querySelector('.profile__edit-button');
 const profileAddbtnNode = document.querySelector('.profile__add-button');
@@ -11,7 +11,7 @@ const popupElementNode = document.querySelector('.popup_element');
 const elementsContainer = document.querySelector('.elements');
 
 
-const initialCards = [
+const initialCard = [
   {
     name: 'Архыз',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -39,6 +39,18 @@ const initialCards = [
 ];
 
 
+// загрузка карточек на страницу через template
+// const elementTemplate = document.querySelector('#element-template').content;
+
+// initialCard.forEach(function (element) {
+// const cardElement = elementTemplate.cloneNode(true);
+
+// cardElement.querySelector('.element__image').src = element.link;
+// cardElement.querySelector('.element__title').textContent = element.name;
+
+//  elementsContainer.append(cardElement);
+
+// });
 
 
 
@@ -86,7 +98,7 @@ for (const elementNode of elementNodes) {
 
   elementImageNode.addEventListener('click', () => {
     openPopupImage(popupElementNode, srcImage, elementTitle);
-  });
+  });  
 }
 
 function openPopupImage(popupNode, srcImage, elementTitle) {
@@ -105,43 +117,56 @@ const formElement = document.querySelector(".form_profile-info");
 const nameInput = document.querySelector(".form__user-name");
 const jobInput = document.querySelector(".form__user-description");
 
-const titleInput = document.querySelector(".form__places-name");
-const imageInput = document.querySelector(".form__src");
+  const titleInput = document.querySelector(".form__places-name");
+  const imageInput = document.querySelector(".form__src");
 
+
+// здесь в функцию добавила форму добавления карточки
 function formSubmitHandler(evt) {
   evt.preventDefault();
 
   document.querySelector(".profile__name").textContent = nameInput.value;
   document.querySelector(".profile__description").textContent = jobInput.value;
-  // document.querySelector(".element__title").textContent = titleInput.value;
-  // document.querySelector(".element__image").textContent = imageInput.src;
-  // const cardElement = elementTemplate.querySelector('.element').cloneNode(true);
+  document.querySelector(".element__title").textContent = titleInput.value;
+  // document.querySelector(".element__image").src = imageInput.src;
+  // cardElement.cloneNode(true);
   // elementsContainer.appeand(cardElement);
 
 
 }
+
 formElement.addEventListener('submit', formSubmitHandler);
 
+// const formNewPlace = document.querySelector('.form_new-place');
+
+// function formCreateCards(evt) {
+//   evt.preventDefault();
+//   document.querySelector(".element__image").src = imageInput.src;
+//   cardElement.cloneNode(true);
+//   elementsContainer.appeand(cardElement);
+
+
+// }
+
+// formNewPlace.addEventListener('click', formCreateCards);
 
 
 
 
 
-const pageBody = document.querySelector('.page');
-const buttonSubmit = document.querySelector('.btn2');
-const profile = document.querySelector('.profile');
-function addCard(imageValue, titleValue) {
-  const elementsTemplate = document.querySelector('#elements-template').textContent;
-  const Element = elementsTemplate.querySelector('.element').cloneNode(true);
-  Element.querySelector('.element__image').textContent = imageSrc;
-  Element.querySelector('.element__title').textContent = titleValue;
-  profile.append(elementsTemplate);
-}
 
 
+// const buttonSubmit = document.querySelector('form__submit-button');
+// const profile = document.querySelector('.profile');
+// function addCard(imageValue, titleValue) {
+// const elementsTemplate = document.querySelector('#elements-template').textContent;
+// const Element = elementsTemplate.querySelector('.element').cloneNode(true);
+// Element.querySelector('.element__image').textContent = imageSrc;
+// Element.querySelector('.element__title').textContent = titleValue;
+// profile.append(elementsTemplate);
+// }
 
 // buttonSubmit.addEventListener('click', function () {
-
 //   evt.preventDefault();
 //   const image = document.querySelector('.form__src');
 //   const title = document.querySelector('.form__places-name');
@@ -154,66 +179,48 @@ function addCard(imageValue, titleValue) {
 // });
 
 
-//const buttonSubmit = document.querySelector('form__submit-button');
+const buttonSubmit = document.querySelector('.create-cards');
 
-
-function cardSubmitHandler(ev) {
+  
+function cardSubmitHandler() {
   ev.preventDefault();
   let titleInputValue = titleInput.value;
   let card = document.createElement('div');
-  card.classList.add("element");
-  elementsContainer.append(card);
-  let buttonTrash = document.createElement('button');
-  buttonTrash.setAttribute('type','button');
-  buttonTrash.classList.add("btn", "element__trash");
-  card.append(buttonTrash);
-  let trashImg = document.createElement("img");
-  trashImg.setAttribute('src', "./images/Trash.svg");
-  trashImg.classList.add('element__trash-img');
-  buttonTrash.append(trashImg);
-  let cardImage = document.createElement('img');
-  cardImage.classList.add('img', 'element__image');
-  cardImage.setAttribute('src', imageInput.value);
-  card.append(cardImage);
-  let description = document.createElement('div');
-  description.classList.add('element__description');
-  card.append(description);
-  let descriptionTitle = document.createElement('h2');
-  descriptionTitle.classList.add('element__title');
-  descriptionTitle.textContent = titleInputValue;
-  description.append(descriptionTitle);
-  let likeButton = document.createElement('button');
-  likeButton.setAttribute('type','button');
-  likeButton.classList.add('btn', 'element__like');
-  description.append(likeButton);
-
-
-
-  const elementTrashNode = document.querySelectorAll('.element__trash-img');
-  elementTrashNode.forEach(trash => {
-  trash.addEventListener('click', () => {
-    trash.closest('.element').remove();
-  });
-
-  const elementLike = document.querySelectorAll('.element__like');
-  elementLike.forEach(like => {
-    like.addEventListener('click', () => {
-      like.classList.toggle('element__like_active');
-    })
-  });
-
-})
+card.classList.add("element");
+elementsContainer.append(card);
+let buttonTrash = document.createElement('button');
+buttonTrash.classList.add('element__trash', "btn");
+card.append(buttonTrash);
+let trashImg = document.createElement("img");
+trashImg.setAttribute('src', "./images/Trash.svg");
+trashImg.classList.add('element__trash-img');
+buttonTrash.append(trashImg);
+let cardImage = document.createElement('img');
+cardImage.classList.add('img', 'element__image');
+cardImage.setAttribute('src', "./images/karachaevsk.jpg");
+card.append(cardImage);
+let description = document.createElement('div');
+description.classList.add('element__description');
+card.append(description);
+let descriptionTitle = document.createElement('h2');
+descriptionTitle.classList.add('element__title');
+descriptionTitle.textContent = titleInputValue;
+description.append(descriptionTitle);
+let likeButton = document.createElement('button');
+likeButton.classList.add('btn', 'element__like');
+description.append(likeButton);
 
 }
 buttonSubmit.addEventListener('click', cardSubmitHandler);
 
 
-for (let i = 0; i < initialCards.length; i++) {
-  cardSubmitHandler(initialCards[i].link, initialCards[i].name);
-}
 
+// const elementTrashNode = document.querySelector('.element__trash');
 
-
+// elementTrashNode.addEventListener('click', (event) => {
+//   const imageElement = elementTrashNode.closest('.element');
+//   imageElement.remove();
+// });
 
 
 

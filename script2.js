@@ -1,7 +1,3 @@
-function likeClickHandler(event) {
-  event.target.classList.toggle('element__like_active');
-}
-
 const profileEditbtnNode = document.querySelector('.profile__edit-button');
 const profileAddbtnNode = document.querySelector('.profile__add-button');
 const elementNodes = document.querySelectorAll('.element');
@@ -38,7 +34,18 @@ const initialCards = [
   }
 ];
 
+// загрузка карточек на страницу через JS с помощью template
+// const elementTemplate = document.querySelector('#element-template').content;
 
+// initialCard.forEach(function (element) {
+// const cardElement = elementTemplate.cloneNode(true);
+
+// cardElement.querySelector('.element__image').src = element.link;
+// cardElement.querySelector('.element__title').textContent = element.name;
+
+//  elementsContainer.append(cardElement);
+
+// });
 
 
 
@@ -69,34 +76,36 @@ profileAddbtnNode.addEventListener('click', (event) => {
 });
 
 
-for (const elementNode of elementNodes) {
-  const elementTrashNode = elementNode.querySelector('.element__trash');
-  const elementLikeNode = elementNode.querySelector('.element__like');
-  const elementImageNode = elementNode.querySelector('.element__image');
-  const srcImage = elementImageNode.src;
-  const elementTitle = elementNode.querySelector('.element__title').textContent;
 
-  elementTrashNode.addEventListener('click', () => {
-    elementNode.remove();
-  });
+// работа с карточками (лайки, корзина, открытие попапа с картинкой) (перестало работать после загрузки карточек через JS)
+// for (const elementNode of elementNodes) {
+//   const elementTrashNode = elementNode.querySelector('.element__trash');
+//   const elementLikeNode = elementNode.querySelector('.element__like');
+//   const elementImageNode = elementNode.querySelector('.element__image');
+//   const srcImage = elementImageNode.src;
+//   const elementTitle = elementNode.querySelector('.element__title').textContent;
 
-  elementLikeNode.addEventListener('click', () => {
-    elementLikeNode.classList.toggle('element__like_active');
-  });
+//   elementTrashNode.addEventListener('click', () => {
+//     elementNode.remove();
+//   });
 
-  elementImageNode.addEventListener('click', () => {
-    openPopupImage(popupElementNode, srcImage, elementTitle);
-  });
-}
+//   elementLikeNode.addEventListener('click', () => {
+//     elementLikeNode.classList.toggle('element__like_active');
+//   });
 
-function openPopupImage(popupNode, srcImage, elementTitle) {
-  const popupImageNode = popupNode.querySelector('.popup__image');
-  const popupTitleNode = popupNode.querySelector('.popup__title');
+//   elementImageNode.addEventListener('click', () => {
+//     openPopupImage(popupElementNode, srcImage, elementTitle);
+//   });
+// }
 
-  popupImageNode.src = srcImage;
-  popupTitleNode.textContent = elementTitle;
-  openPopup(popupNode)
-}
+// function openPopupImage(popupNode, srcImage, elementTitle) {
+//   const popupImageNode = popupNode.querySelector('.popup__image');
+//   const popupTitleNode = popupNode.querySelector('.popup__title');
+
+//   popupImageNode.src = srcImage;
+//   popupTitleNode.textContent = elementTitle;
+//   openPopup(popupNode);
+// }
 
 
 
@@ -107,6 +116,7 @@ const jobInput = document.querySelector(".form__user-description");
 
 const titleInput = document.querySelector(".form__places-name");
 const imageInput = document.querySelector(".form__src");
+
 
 function formSubmitHandler(evt) {
   evt.preventDefault();
@@ -128,10 +138,10 @@ formElement.addEventListener('submit', formSubmitHandler);
 
 
 const pageBody = document.querySelector('.page');
-const buttonSubmit = document.querySelector('.btn2');
+const buttonSubmit = document.querySelector('.create-cards');
 const profile = document.querySelector('.profile');
 function addCard(imageValue, titleValue) {
-  const elementsTemplate = document.querySelector('#elements-template').textContent;
+  const elementsTemplate = document.querySelector('.elements').textContent;
   const Element = elementsTemplate.querySelector('.element').cloneNode(true);
   Element.querySelector('.element__image').textContent = imageSrc;
   Element.querySelector('.element__title').textContent = titleValue;
@@ -146,6 +156,8 @@ function addCard(imageValue, titleValue) {
 //   const image = document.querySelector('.form__src');
 //   const title = document.querySelector('.form__places-name');
 
+
+
 //   addCard(image.src, title.value);
 //   //renderHasSongs();
 
@@ -154,17 +166,17 @@ function addCard(imageValue, titleValue) {
 // });
 
 
-//const buttonSubmit = document.querySelector('form__submit-button');
+// const buttonSubmit = document.querySelector('form__submit-button');
 
 
-function cardSubmitHandler(ev) {
-  ev.preventDefault();
+function cardSubmitHandler(image, cardTitle) {
+
   let titleInputValue = titleInput.value;
   let card = document.createElement('div');
   card.classList.add("element");
   elementsContainer.append(card);
   let buttonTrash = document.createElement('button');
-  buttonTrash.setAttribute('type','button');
+  buttonTrash.setAttribute('type', 'button');
   buttonTrash.classList.add("btn", "element__trash");
   card.append(buttonTrash);
   let trashImg = document.createElement("img");
@@ -173,22 +185,23 @@ function cardSubmitHandler(ev) {
   buttonTrash.append(trashImg);
   let cardImage = document.createElement('img');
   cardImage.classList.add('img', 'element__image');
-  cardImage.setAttribute('src', imageInput.value);
+  cardImage.setAttribute('src', image);
   card.append(cardImage);
   let description = document.createElement('div');
   description.classList.add('element__description');
   card.append(description);
   let descriptionTitle = document.createElement('h2');
   descriptionTitle.classList.add('element__title');
-  descriptionTitle.textContent = titleInputValue;
+  descriptionTitle.textContent = cardTitle;
   description.append(descriptionTitle);
   let likeButton = document.createElement('button');
-  likeButton.setAttribute('type','button');
+  likeButton.setAttribute('type', 'button');
   likeButton.classList.add('btn', 'element__like');
   description.append(likeButton);
 
 
 
+ 
   const elementTrashNode = document.querySelectorAll('.element__trash-img');
   elementTrashNode.forEach(trash => {
   trash.addEventListener('click', () => {
@@ -205,12 +218,47 @@ function cardSubmitHandler(ev) {
 })
 
 }
-buttonSubmit.addEventListener('click', cardSubmitHandler);
-
 
 for (let i = 0; i < initialCards.length; i++) {
   cardSubmitHandler(initialCards[i].link, initialCards[i].name);
 }
+
+buttonSubmit.addEventListener('click', () => {
+  cardSubmitHandler(imageInput.value, titleInput.value)
+});
+  
+
+
+
+
+const cardImage = document.querySelectorAll('.element__image');
+
+function openPopupCard(srcImage, elementTitle) {
+
+const popupElement = document.querySelector('.popup_element');
+popupElement.classList.add('popup_opened');
+popupElement.querySelector('.popup__photo').src = srcImage.src;
+popupElement.querySelector('.popup__title').textContent = elementTitle.textContent;
+const closePopupElement = popupElement.querySelector('.popup__close');
+closePopupElement.addEventListener('click', () => {
+  popupElement.classList.remove('popup_opened');
+})
+};
+
+cardImage.forEach(photo => {
+  photo.addEventListener('click', () => {
+    openPopupCard(photo, photo.closest('.element').querySelector('.element__title'))
+  });
+});
+
+
+
+
+
+
+
+
+
 
 
 

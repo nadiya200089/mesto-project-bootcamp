@@ -1,5 +1,6 @@
 .profile__edit-button-img {
-    margin: 0;
+    margin-right: 0;
+    
 }
 
 @media (max-width: 340px) {

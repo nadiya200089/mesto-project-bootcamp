@@ -1,8 +1,10 @@
 .profile__edit-button {
     border: 1px solid white;
-    padding: 7px;
+    padding: 6px;
     grid-area: edit-button;
     align-self: center;
+    background-color: transparent;
+    max-width: 24px;
 }
 
 .profile__edit-button:hover {
@@ -12,7 +14,7 @@
 
 @media (max-width: 340px) {
     .profile__edit-button {
-
-        padding: 5.25px;
+        max-width: 18px;
+        padding: 3.25px;
     }
 }

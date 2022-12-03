@@ -1,4 +1,7 @@
 .element {
   border-radius: 10px;
   overflow: hidden;
+  max-height: 362px;
+padding-bottom: 84px;
+  position: relative;
 }

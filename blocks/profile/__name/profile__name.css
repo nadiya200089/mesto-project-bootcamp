@@ -3,6 +3,10 @@
     font-weight: 500;
     /* line-height: 3em; */
     grid-area: name;
+    margin: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 @media (max-width: 860px) {
