@@ -35,18 +35,6 @@
         <div class="elements">
 
 
-            <!-- <template id="element-template"> 
-                <div  class="element">
-                    <button type='button' class="btn element__trash">
-                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
-                    </button>
-                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
-                    <div class="element__description">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
-                    </div>
-                </div>  
-            </template>
             <template id="element-template"> 
                 <div  class="element">
                     <button type='button' class="btn element__trash">
@@ -106,7 +94,19 @@
                         <button type='button' class="btn element__like"></button>
                     </div>
                 </div>  
-            </template> -->
+            </template>
+            <template id="element-template"> 
+                <div  class="element">
+                    <button type='button' class="btn element__trash">
+                        <img class="element__trash-img" src="./images/Trash.svg" alt="корзина">
+                    </button>
+                    <img class="img element__image" src="./images/karachaevsk.jpg" alt="Карачаевск">
+                    <div class="element__description">
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button type='button' class="btn element__like"></button>
+                    </div>
+                </div>  
+            </template>
         </div>
     </main>
     <footer>
@@ -122,8 +122,8 @@
                 </button>
                 <h2 class="form__title">Редактировать профиль</h2>
                 <fieldset class="form__input-container">
-                    <input type="text" class="form__user-name" value="Жак-Ив Кусто">
-                    <input type="text" class="form__user-description" value="Исследователь океана">
+                    <input type="text" class="form__user-name" placeholder="Имя" value="">
+                    <input type="text" class="form__user-description" placeholder="Профессия" value="">
                 </fieldset>
                 <button class="btn form__submit-button">Сохранить</button>
             </form>
@@ -143,7 +143,7 @@
                     <input type="text" class="form__places-name" placeholder="название" value="">
                     <input type="text" class="form__src" placeholder="ссылка на картинку" src="">
                 </fieldset>
-                <button type="button" class="btn form__submit-button create-cards">Сохранить</button>
+                <button type="button" class="btn form__submit-button button-create-cards">Сохранить</button>
 
             </div>
         </div>
@@ -161,7 +161,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script1.js"></script>
 </body>
 
 </html>
