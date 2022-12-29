@@ -1,19 +1,17 @@
 .form__submit-button {
-    background-color: black;
-    color: white;
-    margin-top: 48px;
+    background: transparent;
+    color: black;
     font-size: 1.125em;
     font-weight: 400;
     line-height: 1.36125em;
     padding-top: 14px;
     padding-bottom: 18px;
-    border: none;
+    border: 2px solid black;
     border-radius: 2px;
+    opacity: 0.2;
+    margin-top: 18.5px;
 }
 
-.form__submit-button:hover {
-    opacity: 0.8;
-}
 
 
 @media (max-width: 320px) {

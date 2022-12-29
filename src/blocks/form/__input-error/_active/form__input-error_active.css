@@ -1,0 +1,9 @@
+.form__input-error_active {
+    color: red;
+    position: absolute;
+    top: 105%;
+    left: 0;
+    display: block;
+
+
+}
