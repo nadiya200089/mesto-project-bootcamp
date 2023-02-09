@@ -15,17 +15,22 @@
     </header>
     <main class="main">
         <div class="profile">
-
-            <img class="img profile__avatar" src="<%=require('./images/image.jpg')%>" alt="Жак-Ив Кусто">
+            <div class="profile__avatar-container">
+                <img class="img profile__avatar" src="" alt="">
+                <button type='button' aria-label="Редактировать" class="profile__edit-button-avatar">
+                    <img class="img btn profile__edit-button-avatar-img" src="<%=require('./images/bigPencil.svg')%>"
+                        alt="карандаш">
+                </button>
+            </div>
 
             <div class="profile__info">
-                <h1 class="profile__name">Жак-Ив Кусто</h1>
+                <h1 class="profile__name"></h1>
                 <button type='button' aria-label="Редактировать" class="profile__edit-button">
                     <img class="img btn profile__edit-button-img" src="<%=require('./images/pencil.svg')%>"
                         alt="карандаш">
                 </button>
 
-                <p class="profile__description">Исследователь океана</p>
+                <p class="profile__description"></p>
             </div>
             <button type='button' class="btn profile__add-button">
                 <img class="img profile__add-button-img" src="<%=require('./images/plus.svg')%>" alt="плюсик">
@@ -40,7 +45,10 @@
                     <img class="img element__image" src="<%=require('./images/karachaevsk.jpg')%>" alt="Карачаевск">
                     <div class="element__description">
                         <h2 class="element__title">Карачаевск</h2>
-                        <button type='button' class="btn element__like"></button>
+                        <div class="element__like-container">
+                            <button type='button' class="btn element__like"></button>  
+                            <div class="element__like-number">0</div>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -61,12 +69,12 @@
                 <fieldset class="form__input-container">
                     <div class="form__field">
                         <input id="name-input" type="text" class="form__user-name form__input" placeholder="Имя"
-                            value="Жак-Ив Кусто" required minlength="2" maxlength="40">
+                            value="" required minlength="2" maxlength="40">
                         <span class="name-input-error form__input-error"></span>
                     </div>
                     <div class="form__field">
                         <input id="description-input" type="text" class="form__user-description form__input"
-                            placeholder="Профессия" value="Исследователь океана" required minlength="2" maxlength='200'>
+                            placeholder="Профессия" value="" required minlength="2" maxlength='200'>
                         <span class="description-input-error form__input-error"></span>
                     </div>
                 </fieldset>
@@ -111,6 +119,28 @@
                 <img src="" alt="" class="popup__photo">
                 <h2 class="popup__title"></h2>
             </div>
+        </div>
+    </div>
+
+    
+    <div class="popup popup_avatar">
+        <div class="popup__container">
+
+            <form id="opened-popup" class="form form_create-avatar" novalidate>
+                <button class="btn popup__close" type="button">
+                    <img class="img" src="<%=require('./images/close-icon.svg')%>" alt="крестик">
+                </button>
+                <h2 class="form__title">Обновить аватар</h2>
+                <fieldset class="form__input-container">
+                    <div class="form__field">
+                        <input type="url" id="image-input" class="form__avatar-src form__input"
+                            placeholder="ссылка на картинку" src="" required>
+                        <span class="image-input-error form__input-error"></span>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn form__submit-button">Сохранить</button>
+            </form>
+
         </div>
     </div>
 

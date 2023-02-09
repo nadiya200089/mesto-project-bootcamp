@@ -1,70 +1,69 @@
 import '../style/index.css';
-
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
+import { closePopup, profileEditbtnNode, profileAddbtnNode, popupNewPlaceNode, popupProfileNode, openPopup, popupAvatarNode, avatarEditbtnNode } from './utils.js';
+import { elementsContainer, elementTemplate, createCard, renderCard } from './card.js';
+import { handleProfileFormSubmit, profileForm, avatarImage, avatarEditButton, avatarForm, handleAvatarFormSubmit } from './modal.js';
+import { titleInput, imageInput, formNewPlace, addCard, handleNewPlaceFormSubmit } from './card.js';
+import { enableValidation } from './validate.js';
+import { Api } from './api';
+import { data } from 'autoprefixer';
 
 
 // открытие и закрытие попапов 
 
-import {closePopup, profileEditbtnNode, profileAddbtnNode, popupNewPlaceNode, popupProfileNode, openPopup} from './utils.js'
-
 profileEditbtnNode.addEventListener('click', (event) => {
     openPopup(popupProfileNode);
 });
+
+avatarEditbtnNode.addEventListener('click', (event) => {
+    openPopup(popupAvatarNode);
+
+})
 
 profileAddbtnNode.addEventListener('click', (event) => {
     openPopup(popupNewPlaceNode);
 });
 
 
+// загрузка информации о пользователе с сервера
+Api.getUser()
+    .then((data) => {
+        const profileName = document.querySelector(".profile__name");
+        const profileDescription = document.querySelector(".profile__description");
+        const profileAvatar = document.querySelector('.profile__avatar');
+        profileName.textContent = data.name;
+        profileDescription.textContent = data.about;
+        profileAvatar.src = data.avatar;
+        profileAvatar.alt = data.name;
 
-// загрузка карточек на страницу через template
-
-import { elementsContainer, elementTemplate, createCard } from './card.js';
+    })
 
 
-initialCards.forEach(function (element) {
-    const cardElement = createCard(element)
-    elementsContainer.append(cardElement);
+// загрузка карточек на страницу
+
+
+Api.getCards().then(cards => {
+    for (const cardObj of cards) {
+        renderCard(cardObj);
+    }  
 });
+
 
 
 
 //   редактирование профиля
 
-import {handleProfileFormSubmit, profileForm} from './modal.js'
-
 profileForm.addEventListener('submit', handleProfileFormSubmit);
 
 
 
-// Добавление карточки через форму
+//редактирование аватара
 
-import {titleInput, imageInput, formNewPlace, addCard, handleNewPlaceFormSubmit} from './card.js'
+avatarForm.addEventListener('submit', handleAvatarFormSubmit);
+
+
+
+
+// Добавление карточки через форму
 
 formNewPlace.addEventListener('submit', handleNewPlaceFormSubmit);
 
@@ -72,7 +71,12 @@ formNewPlace.addEventListener('submit', handleNewPlaceFormSubmit);
 
 // валидация форм
 
-import {showInputError, hideInputError, checkInputValidity, setEventListeners, enableValidation, hasInvalidInput, toggleButtonState} from './validate.js'
-
-enableValidation();
+enableValidation({
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__submit-button',
+    activeButtonClass: 'form__submit-button_active',
+    inputErrorClass: 'form__input_type-error',
+    errorClassActive: 'form__input-error_active',
+  });
 
