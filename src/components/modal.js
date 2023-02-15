@@ -1,51 +1,20 @@
 //   редактирование профиля
-import { Api } from './api.js';
-import { closePopup, popupAvatarNode, popupProfileNode, renderLoading } from './utils.js'
-export const profileForm = document.querySelector(".form_profile-info");
-export const avatarForm = document.querySelector('.form_create-avatar');
+import { closeByEsc, handleClosePopupOverlay} from './utils.js'
 
+export const popupList = Array.from(document.querySelectorAll('.popup'));
 
-export function handleAvatarFormSubmit(evt) {
-    evt.preventDefault();
-    renderLoading(avatarForm, true);
-
-    const avatarInput = document.querySelector(".form__avatar-src");
-    const profileAvatar = document.querySelector('.profile__avatar');
-
-    const avatarUrl = avatarInput.value;
-    //profileAvatar.src = avatarUrl;
-
-    Api.updateAvatarUser(avatarUrl)
-        .then(res => {
-            profileAvatar.src = res.avatar;
-            closePopup(popupAvatarNode);
-        })
-        .finally(() => {
-            renderLoading(avatarForm, false);
-        }); 
+export function openPopup(popupNode) {
+    popupNode.classList.add('popup_opened');
+    document.addEventListener('keydown', closeByEsc);
+    popupList.forEach(popup => {
+        popup.addEventListener('mousedown', handleClosePopupOverlay)
+    });
+}
+export function closePopup(popupNode) {
+    popupNode.classList.remove('popup_opened');
+    document.removeEventListener('keydown', closeByEsc)
 }
 
-export function handleProfileFormSubmit(evt) {
-    evt.preventDefault();
-    renderLoading(profileForm, true);
 
-    const nameInput = document.querySelector(".form__user-name");
-    const aboutInput = document.querySelector(".form__user-description");
-    const nameNode = document.querySelector(".profile__name");
-    const aboutNode = document.querySelector(".profile__description");
 
-    const name = nameInput.value;
-    const about = aboutInput.value;
-
-    Api.editProfile(name, about)
-        .then(res => {
-            nameNode.textContent = res.name;
-            aboutNode.textContent = res.about;
-            closePopup(popupProfileNode);
-        })
-        .finally(() => {
-            renderLoading(profileForm, false);
-        }); 
-
-}
 

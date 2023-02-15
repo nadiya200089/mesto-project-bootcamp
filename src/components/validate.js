@@ -28,20 +28,17 @@ export const setEventListeners = (formElement, {inputSelector, inputErrorClass, 
     toggleButtonState(inputList, buttonElement, {activeButtonClass});
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', function () {
-            checkInputValidity(formElement, inputElement, { inputErrorClass, errorClassActive});
             toggleButtonState(inputList, buttonElement, {activeButtonClass});
+            checkInputValidity(formElement, inputElement, { inputErrorClass, errorClassActive});
 
         });
     });
+
 };
 
 export function enableValidation({formSelector, inputSelector, submitButtonSelector, activeButtonClass, inputErrorClass, errorClassActive}) {
     const formList = Array.from(document.querySelectorAll(formSelector));
     formList.forEach((formElement) => {
-        formElement.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
-
         setEventListeners(formElement, {inputSelector, inputErrorClass, activeButtonClass, errorClassActive, submitButtonSelector});
     });
 
@@ -57,11 +54,10 @@ export function hasInvalidInput(inputList) {
 export function toggleButtonState(inputList, buttonElement, {activeButtonClass}) {
     if (hasInvalidInput(inputList)) {
         buttonElement.classList.remove(activeButtonClass);
-        buttonElement.style.pointerEvents = 'none';
-
+        buttonElement.setAttribute('disabled', true);
     } else {
         buttonElement.classList.add(activeButtonClass);
-        buttonElement.style.pointerEvents = 'auto';
+        buttonElement.removeAttribute('disabled', true);
     }
 
 }
