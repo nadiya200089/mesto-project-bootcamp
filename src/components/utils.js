@@ -1,5 +1,5 @@
 // открытие и закрытие попапов
-import { closePopup } from "./modal.js";
+import { openPopup} from "./modal.js";
 export const profileEditbtnNode = document.querySelector('.profile__edit-button');
 export const profileAddbtnNode = document.querySelector('.profile__add-button');
 export const avatarEditbtnNode = document.querySelector('.profile__edit-button-avatar');
@@ -10,19 +10,6 @@ export const popupElementNode = document.querySelector('.popup_element');
 export const popupPhoto = popupElementNode.querySelector('.popup__photo');
 export const formList = Array.from(document.querySelectorAll('#opened-popup'));
 
-export function closeByEsc(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
-    }
-}
-export function handleClosePopupOverlay(evt) {
-    const target = evt.target;
-    const openedPopup = document.querySelector('.popup_opened');
-    if (target.classList.contains('popup__container') || target.classList.contains('popup__close-btn')) {
-        closePopup(openedPopup);
-    }
-}
 
 export function openPopupCard(cardImageNode, cardTitleNode) {
     openPopup(popupElementNode);

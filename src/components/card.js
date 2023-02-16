@@ -3,9 +3,10 @@
 import { deleteCard, updateLike } from './api.js';
 import { openPopupCard } from './utils.js';
 const elementsContainer = document.querySelector('.elements');
+const elementTemplate = document.querySelector('#element-template').content;
+
 
 export function createCard(cardObj, myId) {
-    const elementTemplate = document.querySelector('#element-template').content;
     const cardElement = elementTemplate.cloneNode(true).querySelector('.element');
     const cardElementImage = cardElement.querySelector('.element__image');
     const cardLikeNode = cardElement.querySelector('.element__like');

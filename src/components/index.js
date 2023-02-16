@@ -28,11 +28,13 @@ profileEditbtnNode.addEventListener('click', (event) => {
 
 avatarEditbtnNode.addEventListener('click', (event) => {
     openPopup(popupAvatarNode);
+    ButtonState(avatarForm);
 
 })
 
 profileAddbtnNode.addEventListener('click', (event) => {
     openPopup(popupNewPlaceNode);
+    ButtonState(formNewPlace);
 });
 
 
@@ -67,7 +69,6 @@ avatarForm.addEventListener('submit', handleAvatarFormSubmit);
 
 function handleNewPlaceFormSubmit(evt) {
     evt.preventDefault();
-    ButtonState(formNewPlace);
     renderLoading(formNewPlace, true, 'Создать');
 
     const name = titleInput.value;
@@ -75,8 +76,6 @@ function handleNewPlaceFormSubmit(evt) {
 
     createCard(name, link)
         .then(newCardObj => {
-            titleInput.value = newCardObj.name;
-            imageInput.value = newCardObj.link;
             renderCard(newCardObj, 'prepend', myId);
             closePopup(popupNewPlaceNode);
             imageInput.value = '';
@@ -94,7 +93,6 @@ formNewPlace.addEventListener('submit', handleNewPlaceFormSubmit);
 
 export function handleAvatarFormSubmit(evt) {
     evt.preventDefault();
-    ButtonState(avatarForm);
     renderLoading(avatarForm, true, 'Сохранить');
 
     const avatarUrl = avatarInput.value;
